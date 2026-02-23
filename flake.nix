@@ -1,29 +1,21 @@
 {
-  description = Development flake for ...;
+  description = "Development flake for my slidev presentation";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-25.11;
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs =
     { nixpkgs, ... }:
     let
-      x86 = x86_64-linux;
-      pkgs = nixpkgs.legacyPackages.;
+      x86 = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages."${x86}";
     in
     {
-      devShells..default = pkgs.mkShellNoCC {
+      devShells."${x86}".default = pkgs.mkShellNoCC {
         packages = with pkgs; [
-          curl
+          slidev-cli
         ];
-
-        shellHook = ''
-          git config --local core.hooksPath .githooks/
-        '';
-
-        # Environment Variables
-        ENV_VAR = ;
       };
     };
 }
-
