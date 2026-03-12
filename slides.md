@@ -55,9 +55,23 @@ layout: two-cols
 layout: quote
 ---
 
-<div class="flex justify-center items-center text-7xl">
-"I want a network-wide adblocker so that I have to endure less ads" <br> - Me, October 2025
-</div>
+<BigQuote>
+  "I want a network-wide adblocker so that I have to endure less ads..."
+  <template #author>
+    - Me, October 2025
+  </template>
+</BigQuote>
+
+---
+layout: quote
+---
+
+<BigQuote>
+  "...using Nix!"
+  <template #author>
+    - Me, October 2025 <br> (Possibly Delusional)
+  </template>
+</BigQuote>
 
 ---
 layout: image
@@ -98,7 +112,7 @@ flowchart LR
 
 **Needs**
 - Needs to run on hardware I already have (Raspberry Pi 3b+)
-- 
+- Configurable during build
 
 **Wants**
 - Export metrics in some way, shape or form
@@ -106,14 +120,73 @@ flowchart LR
 - Easy to update
 
 
+--- 
+
+# Configuration
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: 'configuration.nix' },
+  ]" 
+/>
+````md magic-move {lines:true}
+
+```nix {all|2-4}
+{
+  machine = {
+    hostname = "adguard";
+  };
+}
+```
+
+
+```nix {3-8}
+{
+  machine = { ... };
+  user = {
+    username = "stan";
+    noPassword = true;
+    initialPassword = "test123";
+    sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHgX2NzC50UtAF/0/AGWSY2x3EvunwPQ5kHiVkQzyMVN noname";
+  };
+}
+```
+
+```nix {4-18}
+{
+  machine = { ... };
+  user = { ... };
+  adguard = {
+    dns = {
+      upstreams = [
+        "https://dns.mullvad.net/dns-query"
+        "https://unfiltered.adguard-dns.com/dns-query"
+        "https://dns.switch.ch/dns-query"
+      ];
+      bootstraps = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
+      upstreamMode = "load_balance";
+    };
+  ...
+  };
+}
+```
+
+````
+
+
 ---
 
 # Testing
-<div class="font-mono text-sm opacity-70 mb-2 bg-[#282a36] inline-block px-4 py-1 rounded-t-md border-b border-[#44475a] transition-all">
-  <span v-if="$clicks <= 5">tests/node-exporter</span>
-  <span v-else-if="$clicks === 6">tests/node-exporter/default.nix</span>
-  <span v-else>tests/node-exporter/script.py</span>
-</div>
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: 'tests/node-exporter/default.nix' },
+    { click: 7, name: 'tests/node-exporter/script.py' }
+  ]" 
+/>
 ````md magic-move {lines:true}
 
 ```nix [tests/node-exporter] {all|2}
