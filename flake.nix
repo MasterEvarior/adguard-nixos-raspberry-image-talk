@@ -15,6 +15,8 @@
       devShells."${x86}".default = pkgs.mkShellNoCC {
         packages = with pkgs; [
           slidev-cli
+          pnpm
+          nodejs
         ];
       };
     };
