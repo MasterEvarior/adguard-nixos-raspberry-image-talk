@@ -74,51 +74,33 @@ layout: quote
 </BigQuote>
 
 ---
-layout: image
+layout: two-cols
 ---
+# Requirements
 
-# Network-wide Adblocker
 
-- Basically a DNS Sinkhole
-- Also works in Apps, TVs, ...
-
-```mermaid
-flowchart LR
-    Client([📱 Client]) -->|DNS Request| PH{Pi-hole / AdGuard}
-    
-
-    PH -->|Domain Blocked| Null[Blocked\nReturns 0.0.0.0]
-    Null --> |Could not resolve| PH
-
-    PH -->|Domain Allowed| Upstream[(Upstream DNS \n 1.1.1.1, 8.8.8.8, ...)]
-    Upstream -->|Returns Real IP| PH
-    
-    %% Styling to make it look nice in Slidev
-    classDef device fill:#3b82f6,color:white,stroke:none
-    classDef pihole fill:#10b981,color:white,stroke:none
-    classDef blocked fill:#ef4444,color:white,stroke:none
-    classDef server fill:#8b5cf6,color:white,stroke:none
-    classDef dns fill:#f59e0b,color:white,stroke:none
-    
-    class Client device
-    class PH pihole
-    class Null blocked
-    class Upstream dns
-```
-
----
-
-# Needs & Wants
-
-**Needs**
 - Needs to run on hardware I already have (Raspberry Pi 3b+)
-- Configurable during build
 
-**Wants**
+<v-clicks>
+
+- Testable (at least somewhat)
 - Export metrics in some way, shape or form
-- Be testable 
-- Easy to update
+- Configurable during build time
+- Require no configuration after installation
 
+</v-clicks>
+
+::right::
+
+<div class="flex justify-center items-center h-full text-9xl transition-all">
+  <div v-if="$clicks === 0">🍓</div>
+  <div v-if="$clicks === 1">🧪</div>
+  <div v-if="$clicks === 2">📈</div>
+  <div v-if="$clicks === 3">⚙️</div>
+  <div v-if="$clicks === 4">🛏️</div>
+</div>
+
+---
 
 --- 
 
@@ -302,7 +284,36 @@ with subtest("Node Exporter is reachable from external client"):
 ---
 
 # CI
-
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: '.github/workflows/ci.yaml' },
+  ]" 
+/>
+````md magic-move {lines:true}
+```yaml {all|12-13|14-18|19-20}
+name: CI
+on:
+  ...
+jobs:
+  test:
+    name: "Execute VM tests"
+    runs-on: ubuntu-latest
+    needs: lint
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31.10.1
+        with:
+          enable_kvm: true
+          extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+      - name: Run All Tests and Checks
+        run: nix develop --command just test-all
+```
+````
 ---
 
 # Learnings
