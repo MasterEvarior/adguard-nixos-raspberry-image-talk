@@ -282,6 +282,17 @@ with subtest("Node Exporter is reachable from external client"):
 ````
 
 ---
+layout: center
+---
+
+<CenteredImage 
+  title="VM Tests in Action"
+  src="vm-tests.gif"
+  alt="VM tests running in action"
+/>
+
+
+---
 
 # CI
 <FileHeaders 

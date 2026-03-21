@@ -17,6 +17,9 @@
           slidev-cli
           pnpm
           nodejs
+
+          asciinema
+          asciinema-agg
         ];
       };
     };
