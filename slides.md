@@ -60,10 +60,19 @@ src: ./pages/configuration.md
 src: ./pages/testing.md
 ---
 
-
 ---
 src: ./pages/ci.md
 ---
+
+---
+layout: center
+---
+<CenteredImage 
+  title="The Rest of the Owl"
+  src="owl.png"
+/>
+
+
 
 ---
 
