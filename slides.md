@@ -31,7 +31,6 @@ layout: two-cols
 <v-clicks>
 
 - Testable (at least somewhat)
-- Export metrics in some way, shape or form
 - Configurable during build time
 - Require no configuration after installation
 
@@ -42,9 +41,8 @@ layout: two-cols
 <div class="flex justify-center items-center h-full text-9xl transition-all">
   <div v-if="$clicks === 0">🍓</div>
   <div v-if="$clicks === 1">🧪</div>
-  <div v-if="$clicks === 2">📈</div>
-  <div v-if="$clicks === 3">⚙️</div>
-  <div v-if="$clicks === 4">🛏️</div>
+  <div v-if="$clicks === 2">⚙️</div>
+  <div v-if="$clicks === 3">🛏️</div>
 </div>
 
 ---
