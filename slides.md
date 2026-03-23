@@ -21,38 +21,16 @@ src: ./pages/intro.md
 ---
 
 ---
-layout: two-cols
----
-# Requirements
 
-
-- Needs to run on hardware I already have (Raspberry Pi 3b+)
-
-<v-clicks>
-
-- Testable (at least somewhat)
-- Configurable during build time
-- Require no configuration after installation
-
-</v-clicks>
-
-::right::
-
-<div class="flex justify-center items-center h-full text-9xl transition-all">
-  <div v-if="$clicks === 0">🍓</div>
-  <div v-if="$clicks === 1">🧪</div>
-  <div v-if="$clicks === 2">⚙️</div>
-  <div v-if="$clicks === 3">🛏️</div>
-</div>
+<RequirementsChecklist />
 
 ---
 src: ./pages/adguard.md
 ---
 
 ---
-src: ./pages/configuration.md 
+src: ./pages/configuration.md
 ---
-
 
 ---
 src: ./pages/testing.md
@@ -74,8 +52,17 @@ layout: center
 
 ---
 
-# Results
+# Result
+
+<!-- TODO: add screenshot here -->
 
 ---
 
 # Links
+
+
+---
+layout: center
+---
+
+# Questions? Ideas? Improvements?

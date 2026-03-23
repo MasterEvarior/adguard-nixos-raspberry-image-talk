@@ -287,3 +287,7 @@ layout: center
   src="build.gif"
   alt=""
 />
+
+---
+
+<RequirementsChecklist :checked="[true, true, false, false]" />

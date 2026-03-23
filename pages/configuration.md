@@ -3,7 +3,7 @@
 <FileHeaders 
   :clicks="$clicks" 
   :steps="[
-    { click: 0, name: 'configuration.nix' },
+    { click: 0, name: 'settings.nix' },
   ]" 
 />
 ````md magic-move {lines:true}
@@ -52,3 +52,119 @@
 ```
 
 ````
+
+---
+
+# Configuration
+
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: 'flake.nix' },
+  ]" 
+/>
+````md magic-move {lines:true}
+
+```nix {all|6-8|17}
+{
+  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+  outputs =
+    { nixpkgs }:
+    let
+      configModule = {
+        _module.args.imageConfig = (import ./settings.nix);
+      };
+    in
+    {
+      nixosConfigurations = {
+        adguard-pi = lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+            ./image/configuration.nix
+            configModule
+          ];
+        };
+      };
+    };
+}
+```
+````
+
+---
+
+# Configuration
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: 'image/services/adguard.nix' },
+  ]" 
+/>
+````md magic-move {lines:true}
+
+```nix {all|3|13-16|10-12}
+{
+  lib,
+  imageConfig
+}:
+{
+  services.adguardhome = {
+    enable = true;
+    # ...
+    settings = {
+      querylog.enabled = false;
+      dhcp.enabled = false;
+      anonymize_client_ip = true;
+      dns = {
+        upstream_dns = imageConfig.adguard.dns.upstreams;
+        bootstrap_dns = imageConfig.adguard.dns.bootstraps;
+      };
+    };
+  };
+  networking.firewall = {
+    # ...
+  };
+}
+```
+
+````
+
+---
+
+# Configuration
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: 'image/services/adguard.nix' },
+  ]" 
+/>
+````md magic-move {lines:true}
+
+```nix {all|6-12|7-10}
+{
+  lib,
+  imageConfig
+}:
+{
+  assertions = [
+    {
+      assertion = builtins.length upstreams != 0 upstreams;
+      message = "Error: At least one upstream DNS needs to be defined";
+    }
+    # ...
+  ]
+
+  services.adguardhome = {
+    # ...
+  };
+  networking.firewall = {
+    # ...
+  };
+}
+```
+
+````
+
+---
+
+<RequirementsChecklist :checked="[true, true, true, false]" />
