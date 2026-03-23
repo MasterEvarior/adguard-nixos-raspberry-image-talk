@@ -60,6 +60,10 @@ layout: center
 
 # Links
 
+<Links :links="[
+    { title: 'Source Code', url: 'https://github.com/MasterEvarior/adguard-nixos-raspberry-image' },
+    { title: 'Presentation', url: 'https://github.com/MasterEvarior/adguard-nixos-raspberry-image-talk' }
+]" />
 
 ---
 layout: center
