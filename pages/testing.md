@@ -9,13 +9,13 @@
 />
 ````md magic-move {lines:true}
 
-```nix [tests/node-exporter] {all|2}
+```nix [tests/adguard/default.nix] {all|2}
 pkgs.testers.runNixOSTest {
-  name = "node-exporter";
+  name = "adguard";
 }
 ```
 
-```nix [tests/node-exporter] {3-4,11|5-10}
+```nix [tests/adguard/default.nix] {3-4,11|5-10}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
   nodes = {
@@ -30,7 +30,7 @@ pkgs.testers.runNixOSTest {
 }
 ```
 
-```nix [tests/node-exporter] {12}
+```nix [tests/adguard/default.nix] {12}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
   nodes = {
@@ -48,7 +48,7 @@ pkgs.testers.runNixOSTest {
 }
 ```
 
-```nix [tests/node-exporter] {14-19}
+```nix [tests/adguard/default.nix] {14-19}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
   nodes = {
@@ -72,7 +72,7 @@ pkgs.testers.runNixOSTest {
 }
 ```
 
-```nix [tests/node-exporter/default.nix] {21}
+```nix [tests/adguard/default.nix] {21}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
   nodes = {
@@ -97,27 +97,85 @@ pkgs.testers.runNixOSTest {
 }
 ```
 
-```python [tests/node-exporter/script.py] {1|3-4}
+```python [tests/adguard/script.py] {all|1|3-5|7-15}
 start_all()
 
-server.wait_for_unit("prometheus-node-exporter.service")
-server.wait_for_open_port(9100)
+server.wait_for_unit("adguardhome.service")
+server.wait_for_open_port(53)
+server.wait_for_open_port(80)
+
+with subtest("AdGuard Home is reachable from server"):
+    server.succeed(
+        "curl --fail http://127.0.0.1:80 | grep -q '<title>AdGuard Home</title>'"
+    )
+
+with subtest("AdGuard Home is reachable from client"):
+    client.succeed(
+        "curl --fail http://server:80 | grep -q '<title>AdGuard Home</title>'"
+    )
 ```
 
-```python [tests/node-exporter/script.py] {6-7|9-10}
+```python [tests/adguard/script.py] {all|1|7-20|8-11|13|15-20}
+import json
+
 start_all()
 
-server.wait_for_unit("prometheus-node-exporter.service")
-server.wait_for_open_port(9100)
+# ...
 
-with subtest("Node Exporter is reachable from server"):
-    server.succeed("curl --fail http://127.0.0.1:9100/metrics")
+with subtest("AdGuard Home has loaded specified lists via API"):
+    response = server.succeed(
+        "curl -s http://127.0.0.1:80/control/filtering/status"
+    ).strip()
+    data = json.loads(response)
 
-with subtest("Node Exporter is reachable from external client"):
-    client.succeed("curl --fail http://server:9100/metrics")
+    filter_names = [f["name"] for f in data.get("filters", [])]
+
+    expected_filters = ["URL House", "AdAway Default Blocklist"]
+    for name in expected_filters:
+        if name in filter_names:
+            server.log(f"Verified filter: {name}")
+        else:
+            server.fail(f"Filter '{name}' not found in AdGuard. Found: {filter_names}")
+
 ```
 
 ````
+
+---
+
+# Testing
+
+<FileHeaders 
+  :clicks="$clicks" 
+  :steps="[
+    { click: 0, name: 'flake.nix' },
+  ]" 
+/>
+````md magic-move {lines:true}
+```nix {all|16-18}
+{
+  inputs = { nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11"; };
+
+  outputs =
+    { nixpkgs }:
+    let
+      configModule = {
+        _module.args.imageConfig = (import ./settings.nix);
+      };
+    in
+    {
+      nixosConfigurations = {
+        # ...
+      };
+
+      checks.x86_64-linux.adguard = import ./tests/adguard {
+        inherit pkgs;
+      };
+    };
+}
+```
+````
+
 
 ---
 layout: center
@@ -132,6 +190,7 @@ layout: center
 ---
 
 # CI
+
 <FileHeaders 
   :clicks="$clicks" 
   :steps="[

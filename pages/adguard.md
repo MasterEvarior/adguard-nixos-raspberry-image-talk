@@ -254,15 +254,12 @@ anonymize_client_ip: true
   ]" 
 />
 ````md magic-move {lines:true}
-```nix {all|15|14}
+```nix {all|12|11}
 {
   inputs = { nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11"; };
 
   outputs =
     { nixpkgs }:
-    let
-      lib = nixpkgs.lib;
-    in
     {
       nixosConfigurations = {
         adguard-pi = lib.nixosSystem {
