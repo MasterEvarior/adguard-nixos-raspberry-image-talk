@@ -238,7 +238,6 @@ anonymize_client_ip: true
     hostName = "adguard";
     networkmanager.enable = true;
   };
-  system.stateVersion = "25.05";
 }
 ```
 ````
