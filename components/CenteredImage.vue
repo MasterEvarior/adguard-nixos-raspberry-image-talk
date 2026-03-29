@@ -7,10 +7,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center w-full px-16 py-8">
-    <h1 v-if="title">
+  <div class="flex flex-col items-center w-full px-16 py-8 h-screen absolute top-0 left-0 right-0">
+    <h1 v-if="title" class="mb-4">
       {{ title }}
     </h1>
-    <img :src="src" :alt="alt" class="max-w-full max-h-[50vh] object-contain" />
+    <img :src="src" :alt="alt" class="h-[50vh] w-auto object-contain" />
   </div>
 </template>

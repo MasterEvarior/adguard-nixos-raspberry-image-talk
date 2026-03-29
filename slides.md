@@ -43,6 +43,7 @@ src: ./pages/ci.md
 ---
 layout: center
 ---
+
 <CenteredImage 
   title="The Rest of the Owl"
   src="owl.png"
@@ -51,10 +52,13 @@ layout: center
 
 
 ---
+layout: center
+---
 
-# Result
-
-<!-- TODO: add screenshot here -->
+<CenteredImage 
+  title="Result"
+  src="result.png"
+/>
 
 ---
 
