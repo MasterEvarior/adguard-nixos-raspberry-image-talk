@@ -34,7 +34,7 @@ pkgs.testers.runNixOSTest {
 ```nix [tests/adguard/default.nix] {3-4,11|5-10}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
-  nodes = {
+  nodes = { # Each node is a VM
     server = # First Machine
       { pkgs, lib, ... }:
       {
@@ -49,7 +49,7 @@ pkgs.testers.runNixOSTest {
 ```nix [tests/adguard/default.nix] {12}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
-  nodes = {
+  nodes = { # Each node is a VM
     server = # First Machine
       { pkgs, lib, ... }:
       {
@@ -67,7 +67,7 @@ pkgs.testers.runNixOSTest {
 ```nix [tests/adguard/default.nix] {14-19}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
-  nodes = {
+  nodes = { # Each node is a VM
     server = # First Machine
       { pkgs, lib, ... }:
       {
@@ -91,7 +91,7 @@ pkgs.testers.runNixOSTest {
 ```nix [tests/adguard/default.nix] {21}
 pkgs.testers.runNixOSTest {
   name = "node-exporter";
-  nodes = {
+  nodes = { # Each node is a VM
     server = # First Machine
       { pkgs, lib, ... }:
       {

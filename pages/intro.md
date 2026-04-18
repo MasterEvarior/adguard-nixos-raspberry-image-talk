@@ -42,7 +42,7 @@ layout: quote
 ---
 
 <BigQuote>
-  "I want a network-wide adblocker so that I have to endure less ads..."
+  "I want a network-wide adblocker to avoid ads..."
   <template #author>
     - Me, October 2025
   </template>
@@ -71,3 +71,13 @@ layout: quote
     :darkMode="true"
   />
 </div>
+
+---
+clicks: 1
+---
+
+# Network-Wide Adblocker
+
+<img v-if="$clicks === 0" src="/pi-hole.png">
+<img v-if="$clicks === 1" src="/adguardhome.png">
+
