@@ -232,6 +232,16 @@ layout: center
 
 ---
 
+<CenteredImage 
+  title="CI"
+  src="ci.png"
+  alt="A bad meme about CI"
+/>
+
+
+
+---
+
 # CI
 
 <FileHeaders 
