@@ -20,6 +20,9 @@ importers:
       '@slidev/theme-seriph':
         specifier: latest
         version: 0.25.0
+      slidev-addon-excalidraw:
+        specifier: ^1.1.0
+        version: 1.1.0
       slidev-addon-fancy-arrow:
         specifier: ^0.16.0
         version: 0.16.0(typescript@5.9.3)
@@ -2431,6 +2434,9 @@ packages:
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
+
+  slidev-addon-excalidraw@1.1.0:
+    resolution: {integrity: sha512-RMNskVsy4wtq666iizGhw6whWzQgmFN1YIjMfzwUHzkbLfkAUn9drUqiJqsaFNevTOB1sL7T6sFBwmY7fPY+OA==}
 
   slidev-addon-fancy-arrow@0.16.0:
     resolution: {integrity: sha512-gO86WtC+TZo1ZXkWKHBBV+UGZ2136ngDAuUliV1hiGpoNtGE1L+mmUwa+MGHmJ+PEMzS/p6ewWPMFi4wR2E32w==}
@@ -5756,6 +5762,8 @@ snapshots:
       totalist: 3.0.1
 
   sisteransi@1.0.5: {}
+
+  slidev-addon-excalidraw@1.1.0: {}
 
   slidev-addon-fancy-arrow@0.16.0(typescript@5.9.3):
     dependencies:

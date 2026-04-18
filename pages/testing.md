@@ -1,4 +1,20 @@
 
+
+# Testing
+
+- Is the admin UI reachable under `localhost:80`?
+- Is the admin UI reachable from an external client?
+
+<Excalidraw
+  drawFilePath="./tests-simple.excalidraw"
+  class="w-[900px]"
+  :darkMode="true"
+  :background="false"
+/>
+
+
+---
+
 # Testing
 <FileHeaders 
   :clicks="$clicks" 
@@ -189,6 +205,33 @@ layout: center
 
 ---
 
+# VM Tests in Action
+
+<v-clicks>
+
+- Starts a VM with our configured NixOS as the server  
+  ```log
+  server: (finished: waiting for the VM to finish booting, in 61.07 seconds)
+  server: (finished: waiting for unit adguardhome.service, in 68.88 seconds)
+  server: waiting for TCP port 53 on localhost
+  server: (finished: waiting for TCP port 53 on localhost, in 3.88 seconds)
+  ```
+- Starts the client with our configured packages
+- Runs the python script and our tests  
+  ```log
+  client: (finished: must succeed: curl --fail http://server:80 | grep -q '<title>AdGuard Home</title>', in 0.62 seconds)
+  (finished: subtest: AdGuard Home is reachable from client, in 0.62 seconds)
+  ```
+- Fail if any test is not successful
+- Otherwise, simply quits with exit code 0  
+  ```log
+  test script finished in 76.62s
+  ```
+
+</v-clicks>
+
+---
+
 # CI
 
 <FileHeaders 
@@ -229,7 +272,6 @@ jobs:
   src="gh-actions.png"
   alt="Successful test run on GitHub Actions"
 />
-
 
 ---
 

@@ -11,6 +11,7 @@ zoom: 1.8
 magicMoveDuration: 250
 addons:
   - fancy-arrow
+  - slidev-addon-excalidraw
 ---
 
 # Declarative Adblocking 
