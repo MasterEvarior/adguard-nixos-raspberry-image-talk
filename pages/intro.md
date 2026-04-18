@@ -14,7 +14,7 @@ layout: two-cols
   - Dungeons and Dragons
   - Traveling
 - Things that I do not like
-  - People that talk too much about themselves
+  - People that make long lists about themselves
   - Ads
 
 </v-clicks>
@@ -32,6 +32,10 @@ layout: two-cols
   <div v-if="$clicks === 7">🗨️</div>
   <div v-if="$clicks >= 8">🤬</div>
 </div>
+
+---
+
+
 
 ---
 layout: quote
