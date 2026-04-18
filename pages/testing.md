@@ -224,4 +224,13 @@ jobs:
 
 ---
 
+<CenteredImage 
+  title="CI"
+  src="gh-actions.png"
+  alt="Successful test run on GitHub Actions"
+/>
+
+
+---
+
 <RequirementsChecklist :checked="[true, true, true, true]" />
