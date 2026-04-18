@@ -10,11 +10,8 @@
 />
 ````md magic-move {lines:true}
 
-```nix {all|6-8}
-{
-  lib,
-  ...
-}:
+```nix {all|3-5}
+{...}:
 {
   services.adguardhome = {
     enable = true;
@@ -22,11 +19,8 @@
 }
 ```
 
-```nix {all|8-11}
-{
-  lib,
-  ...
-}:
+```nix {all|5-8}
+{...}:
 {
   services.adguardhome = {
     enable = true;
@@ -39,11 +33,8 @@
 ```
 
 
-```nix {all|12-16}
-{
-  lib,
-  ...
-}:
+```nix {all|9-13}
+{...}:
 {
   services.adguardhome = {
     enable = true;
@@ -79,11 +70,8 @@ style:
   ]" 
 />
 
-```nix {12-16}
-{
-  lib,
-  ...
-}:
+```nix {9-13}
+{...}:
 {
   services.adguardhome = {
     enable = true;
@@ -119,7 +107,7 @@ anonymize_client_ip: true
 
 <div v-click>
   <FancyArrow
-      from="(300, 370)"
+      from="(305, 350)"
       to="(520, 175)"
       arc="0.2"
       color="red"
@@ -139,10 +127,7 @@ anonymize_client_ip: true
 ````md magic-move {lines:true}
 
 ```nix {all}
-{
-  lib,
-  ...
-}:
+{...}:
 {
   services.adguardhome = {
     enable = true;
@@ -160,10 +145,7 @@ anonymize_client_ip: true
 ```
 
 ```nix {all}
-{
-  lib,
-  ...
-}:
+{...}:
 {
   services.adguardhome = {
     # ...
@@ -171,11 +153,8 @@ anonymize_client_ip: true
 }
 ```
 
-```nix {all|10-13}
-{
-  lib,
-  ...
-}:
+```nix {all|7-10}
+{...}:
 {
   services.adguardhome = {
     # ...
