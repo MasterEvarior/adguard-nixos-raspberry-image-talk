@@ -117,6 +117,15 @@ dhcp:
 anonymize_client_ip: true
 ```
 
+<div v-click>
+  <FancyArrow
+      from="(300, 370)"
+      to="(520, 175)"
+      arc="0.2"
+      color="red"
+  />
+</div>
+
 ---
 
 # AdGuardHome

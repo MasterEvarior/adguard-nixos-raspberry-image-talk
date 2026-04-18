@@ -9,6 +9,8 @@ transition: fade-in
 layout: center
 zoom: 1.8
 magicMoveDuration: 250
+addons:
+  - fancy-arrow
 ---
 
 # Declarative Adblocking 

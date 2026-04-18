@@ -20,6 +20,9 @@ importers:
       '@slidev/theme-seriph':
         specifier: latest
         version: 0.25.0
+      slidev-addon-fancy-arrow:
+        specifier: ^0.16.0
+        version: 0.16.0(typescript@5.9.3)
       slidev-theme-dracula:
         specifier: ^0.2.0
         version: 0.2.0
@@ -2428,6 +2431,9 @@ packages:
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
+
+  slidev-addon-fancy-arrow@0.16.0:
+    resolution: {integrity: sha512-gO86WtC+TZo1ZXkWKHBBV+UGZ2136ngDAuUliV1hiGpoNtGE1L+mmUwa+MGHmJ+PEMzS/p6ewWPMFi4wR2E32w==}
 
   slidev-theme-dracula@0.2.0:
     resolution: {integrity: sha512-ndMD27+gUNYt9aXrb4/0vSBHKP007mpD2eCJppzhqXDG1DmN0Q6I6iFz+QvIjOPDKzzPjoYZbsWp6lPLJjgs9g==}
@@ -5750,6 +5756,13 @@ snapshots:
       totalist: 3.0.1
 
   sisteransi@1.0.5: {}
+
+  slidev-addon-fancy-arrow@0.16.0(typescript@5.9.3):
+    dependencies:
+      roughjs: 4.6.6
+      vue: 3.5.30(typescript@5.9.3)
+    transitivePeerDependencies:
+      - typescript
 
   slidev-theme-dracula@0.2.0:
     dependencies:
