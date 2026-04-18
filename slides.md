@@ -17,7 +17,7 @@ addons:
 
 # Declarative Adblocking 
 
-with Nix and a Raspberry Pis 
+with Nix and a Raspberry Pi
 
 
 ---
