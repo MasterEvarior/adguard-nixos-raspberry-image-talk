@@ -58,3 +58,16 @@ layout: quote
     - Me, October 2025 <br> (Possibly Delusional)
   </template>
 </BigQuote>
+
+
+---
+
+# Network-Wide Adblocker?
+
+<div class="flex justify-center">
+  <Excalidraw
+    drawFilePath="./adguard.excalidraw"
+    class="w-[650px]"
+    :darkMode="true"
+  />
+</div>
