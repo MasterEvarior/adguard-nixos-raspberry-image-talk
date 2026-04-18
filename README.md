@@ -7,3 +7,8 @@ Slides and resources for my talk about [one of my side projects](https://github.
 ```
 pnpm install && pnpm dev
 ```
+
+## Pre-Flight Checklist
+- [ ] Adguard VM running
+- [ ] Built image at least once successfully
+- [ ] (Optional) Changed all live terminals to the correct directory
