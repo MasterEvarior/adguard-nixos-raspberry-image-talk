@@ -19,8 +19,8 @@
 <FileHeaders 
   :clicks="$clicks" 
   :steps="[
-    { click: 0, name: 'tests/node-exporter/default.nix' },
-    { click: 7, name: 'tests/node-exporter/script.py' }
+    { click: 0, name: 'tests/adguard/default.nix' },
+    { click: 7, name: 'tests/adguard/script.py' }
   ]" 
 />
 ````md magic-move {lines:true}
@@ -113,7 +113,7 @@ pkgs.testers.runNixOSTest {
 }
 ```
 
-```python [tests/adguard/script.py] {all|1|3-5|7-15}
+```python [tests/adguard/script.py] {all|1|3-5|7-10|12-15}
 start_all()
 
 server.wait_for_unit("adguardhome.service")
@@ -194,20 +194,23 @@ with subtest("AdGuard Home has loaded specified lists via API"):
 
 
 ---
-layout: center
+class: flex flex-col
 ---
 
-<CenteredImage 
-  title="VM Tests in Action"
-  src="vm-tests.gif"
-  alt="VM tests running in action"
-/>
+# VM Tests in Action
+
+<div class="flex-1">
+  <Terminal
+    persist
+    session="tests"
+  />
+</div>
+
 
 ---
 
 # VM Tests in Action
 
-<v-clicks>
 
 - Starts a VM with our configured NixOS as the server  
   ```log
@@ -216,6 +219,9 @@ layout: center
   server: waiting for TCP port 53 on localhost
   server: (finished: waiting for TCP port 53 on localhost, in 3.88 seconds)
   ```
+
+<v-clicks>
+
 - Starts the client with our configured packages
 - Runs the python script and our tests  
   ```log

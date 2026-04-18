@@ -12,6 +12,7 @@ magicMoveDuration: 250
 addons:
   - fancy-arrow
   - slidev-addon-excalidraw
+  - liveshell
 ---
 
 # Declarative Adblocking 

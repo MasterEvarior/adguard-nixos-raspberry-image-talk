@@ -458,14 +458,17 @@ style:
 ````
 
 ---
-layout: center
+class: flex flex-col
 ---
 
-<CenteredImage 
-  title="AdGuardHome"
-  src="build.gif"
-  alt=""
-/>
+# Build SD-Card Image
+
+<div class="flex-1">
+  <Terminal
+    persist
+    session="build"
+  />
+</div>
 
 ---
 

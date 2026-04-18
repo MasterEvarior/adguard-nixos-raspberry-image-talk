@@ -131,7 +131,8 @@
 
 ---
 
-# Configuration
+# Validate Config
+
 <FileHeaders 
   :clicks="$clicks" 
   :steps="[
@@ -161,6 +162,40 @@
     # ...
   };
 }
+```
+
+````
+
+---
+
+# Validate Config
+
+````md magic-move {lines:true}
+
+```shell {all|22-23}
+nix build .#nixosConfigurations.adguard-pi.config.system.build.sdImage
+warning: Git tree '/home/giannin/Documents/Github/NIX/adguard-nixos-raspberry-image' is dirty
+error:
+       … while evaluating attribute 'buildCommand' of derivation 'nixos-image-sd-card-25.11.20260320.812b398-...'
+         at /nix/store/8ggk1060asqg0dl17gbysd9zknlzhjca-source/nixos/modules/installer/sd-card/sd-image.nix:269:9:
+          268|
+          269|         buildCommand = ''
+             |         ^
+          270|           mkdir -p $out/nix-support $out/sd-image
+
+       … while evaluating the option `sdImage.populateRootCommands':
+
+       … while evaluating definitions from `/nix/store/8ggk1060asqg0dl17gbysd9zknlzhjca-source/nixos/modules/...':
+
+       … while evaluating the option `system.build.toplevel':
+
+       … while evaluating definitions from `/nix/store/8ggk1060asqg0dl17gbysd9zknlzhjca-source/nixos/modules/...':
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error:
+       Failed assertions:
+       - Error: At least one upstream DNS needs to be defined
 ```
 
 ````

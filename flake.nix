@@ -20,6 +20,8 @@
 
           asciinema
           asciinema-agg
+
+          ttyd
         ];
       };
     };
