@@ -3,8 +3,8 @@ theme: dracula
 highlighter: shiki
 lineNumbers: false
 fonts:
-  sans: 'Inter'
-  mono: 'JetBrains Mono'
+  sans: "Inter"
+  mono: "JetBrains Mono"
 transition: fade-in
 layout: center
 zoom: 1.8
@@ -44,6 +44,28 @@ src: ./pages/ci.md
 ---
 
 ---
+
+# Result
+
+<iframe 
+  src="http://localhost:8080"
+  width="100%" 
+  height="400px" 
+  frameborder="0">
+</iframe> 
+
+---
+
+# Result
+
+<iframe
+  src="http://localhost:9100"
+  width="100%" 
+  height="400px" 
+  frameborder="0">
+</iframe> 
+
+---
 layout: center
 ---
 
@@ -53,27 +75,11 @@ layout: center
 />
 
 
-
----
-layout: center
 ---
 
-<CenteredImage 
-  title="Result"
-  src="result.png"
-/>
-
----
-
-# Links
+# Questions? Ideas? Improvements?
 
 <Links :links="[
     { title: 'Source Code', url: 'https://github.com/MasterEvarior/adguard-nixos-raspberry-image' },
     { title: 'Presentation', url: 'https://github.com/MasterEvarior/adguard-nixos-raspberry-image-talk' }
 ]" />
-
----
-layout: center
----
-
-# Questions? Ideas? Improvements?
