@@ -34,10 +34,6 @@ layout: two-cols
 </div>
 
 ---
-
-
-
----
 layout: quote
 ---
 
