@@ -31,6 +31,10 @@ layout: two-cols
   <div v-if="$clicks === 6">💔</div>
   <div v-if="$clicks === 7">🗨️</div>
   <div v-if="$clicks >= 8">🤬</div>
+  <img v-if="$clicks >= 8" src="/ad_1.png" class="absolute bottom-3/8 right-7 w-40 -rotate-6" />
+  <img v-if="$clicks >= 8" src="/ad_2.png" class="absolute bottom-1 right-45 w-80 rotate-5" />
+  <img v-if="$clicks >= 8" src="/ad_3.png" class="absolute -top-3 right-55 w-100 -rotate-5" />
+  <img v-if="$clicks >= 8" src="/ad_4.png" class="absolute -bottom-15 left-20 w-75 -rotate-5" />
 </div>
 
 ---
