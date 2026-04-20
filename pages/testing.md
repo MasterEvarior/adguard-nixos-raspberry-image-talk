@@ -242,6 +242,7 @@ class: flex flex-col
   title="CI"
   src="ci.png"
   alt="A bad meme about CI"
+  maxHeight="45vh"
 />
 
 
@@ -287,6 +288,7 @@ jobs:
   title="CI"
   src="gh-actions.png"
   alt="Successful test run on GitHub Actions"
+  maxHeight="35vh"
 />
 
 ---

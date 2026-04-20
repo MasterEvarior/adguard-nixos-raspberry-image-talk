@@ -73,6 +73,8 @@ layout: center
 <CenteredImage 
   title="The Rest of the Owl"
   src="owl.png"
+  maxHeight="60vh"
+  justifyCenter=true
 />
 
 
